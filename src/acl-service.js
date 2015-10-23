@@ -346,6 +346,9 @@ angular.module('ng-acl').service('AclService', function (AclRegistryService) {
         if (resource instanceof Object && typeof resource.getResourceId === 'function') {
             resource = resource.getResourceId();
         }
+        else if (resource instanceof Object && typeof resource.getResourceId === 'string'){
+            resource = resource.getResourceId;
+        }
 
         return _resources[resource].id;
     };
@@ -368,6 +371,9 @@ angular.module('ng-acl').service('AclService', function (AclRegistryService) {
     this.hasResource = function (resource) {
         if (resource instanceof Object && typeof resource.getResourceId === 'function') {
             resource = resource.getResourceId();
+        }
+        else if (resource instanceof Object && typeof resource.getResourceId === 'string'){
+            resource = resource.getResourceId;
         }
 
         return _resources[resource] !== undefined;
